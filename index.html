@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div style="display: flex; flex-direction: column">
+      <div
+        style="
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 20px;
+        "
+      >
+        <p
+          onclick="set_type('+')"
+          class="options"
+          style="border: 1px solid black; padding: 10px; cursor: pointer"
+        >
+          +
+        </p>
+        <p
+          onclick="set_type('-')"
+          class="options"
+          style="border: 1px solid black; padding: 10px; cursor: pointer"
+        >
+          -
+        </p>
+        <p
+          onclick="set_type('*')"
+          class="options"
+          style="border: 1px solid black; padding: 10px; cursor: pointer"
+        >
+          *
+        </p>
+        <p
+          onclick="set_type('/')"
+          class="options"
+          style="border: 1px solid black; padding: 10px; cursor: pointer"
+        >
+          /
+        </p>
+        <p id="z" style="margin-left: 20px">+</p>
+      </div>
+      <div
+        style="
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 20px;
+        "
+      >
+        <input id="input1" type="number" />
+        <small id="l"></small>
+        <input id="input2" type="number" />
+        <div>
+          <h1 onclick="culc()" id="resulte">resulte</h1>
+        </div>
+        <button onclick="culc()" id="btn" style="width: 25%">culc</button>
+      </div>
+    </div>
+  </body>
+  <script>
+    var type = "+";
+
+    var optins = document.getElementsByClassName("options");
+    var a = optins[0];
+    var b = optins[1];
+    var c = optins[2];
+    var e = optins[3];
+    var input1 = document.getElementById("input1");
+    var input2 = document.getElementById("input2");
+    var resulte = document.getElementById("resulte");
+    var btn = document.getElementById("btn");
+    var z = document.getElementById("z");
+    var l = document.getElementById("l");
+
+    function set_type(d) {
+      type = d;
+      z.innerHTML = d;
+    }
+
+    function culc() {
+      if (input1.value.length === 0) {
+        console.log("error");
+        l.innerHTML = "error";
+      } else {
+        if (type === "+") {
+          var value = parseInt(input1.value) + parseInt(input2.value);
+        } else if (type === "-") {
+          var value = parseInt(input1.value) - parseInt(input2.value);
+        } else if (type === "*") {
+          var value = parseInt(input1.value) * parseInt(input2.value);
+        } else if (type === "/") {
+          var value = parseInt(input1.value) / parseInt(input2.value);
+        }
+      }
+      resulte.innerHTML = value;
+    }
+  </script>
+</html>
